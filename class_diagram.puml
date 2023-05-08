@@ -41,4 +41,27 @@ class Teacher {
 + subjects : Subject[]
 }
 
+enum StatusStudent {
+Active
+OnAcademicLeave
+Expelled
+}
+
+Subject <--* Student
+StatusStudent <--* Student
+Date <--* Student
+class Student {
++ first_name : string
++ last_name : string
++ patronymic : string
++ date_of_birth : Date
++ faculty : string
++ group : string
++ date_of_receipt : Date
++ date_of_deduction : Date
++ status : StatusStudent
++ subjects : Subject[]
++ journal : map <Subject, marks[]>
+}
+
 @enduml

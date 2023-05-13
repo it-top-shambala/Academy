@@ -6,13 +6,15 @@ Base
 Optional
 }
 
-SubjectType <--* Subject
-class Subject {
+
+struct Subject {
 + name : string
 + type : SubjectType
 }
 
-class Date {
+SubjectType <--* Subject
+
+struct Date {
 + day : int
 + month : int
 + year : int
@@ -25,10 +27,7 @@ OnHoliday
 OnSickLeave
 }
 
-Subject <--* Teacher
-StatusTeacher <--* Teacher
-Date <--* Teacher
-class Teacher {
+struct Teacher {
 + first_name : string
 + last_name : string
 + patronymic : string
@@ -40,5 +39,31 @@ class Teacher {
 + status : StatusTeacher
 + subjects : Subject[]
 }
+
+Subject <--* Teacher
+StatusTeacher <--* Teacher
+Date <--* Teacher
+
+struct Student {
++ first_name : string
++ last_name : string
++ patronymic : string
++ faculty : string
++ date_of_receipt : Date
++ date_of_deduction : Date
++ status : StatusStudent
++ subjects : Subject[]
++ journal : map<subject.id,marks[]>;
+}
+
+enum StatusStudent {
+educate
+dismissed
+AcademHoliday
+}
+
+Subject <--* Student
+StatusStudent <--* Student
+Date <--* Student
 
 @enduml

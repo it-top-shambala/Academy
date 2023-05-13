@@ -53,7 +53,7 @@ struct Student {
 + date_of_deduction : Date
 + status : StatusStudent
 + subjects : Subject[]
-+ marks : int[];
++ journal : map<subject.id,marks[]>;
 }
 
 enum StatusStudent {
